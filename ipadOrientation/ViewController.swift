@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -21,5 +22,13 @@ class ViewController: UIViewController {
     }
 
 
+    
+    override public var traitCollection: UITraitCollection {
+        if UIDevice.current.userInterfaceIdiom == .pad && UIDevice.current.orientation.isPortrait {
+            return UITraitCollection(traitsFrom: [UITraitCollection(horizontalSizeClass: .compact), UITraitCollection(verticalSizeClass: .regular)])
+        }
+        return super.traitCollection
+    }
 }
+
 
